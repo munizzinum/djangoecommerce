@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from core.views import index
+from core import views
 
+# The use of 'name' in url is like a label to call this html pages
+# This make the urls more accessible
 urlpatterns = [
-    re_path(r'^$', index),
+    re_path(r'^$', views.index, name='index'),
+    re_path(r'^contato/$',views.contact, name='contact'),
+    re_path(r'^produto/$', views.product, name='product'),
+    re_path(r'^produtos/$', views.product_list, name='product_list'),
     path('admin/', admin.site.urls),
 ]
